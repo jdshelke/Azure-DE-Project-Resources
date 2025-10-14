@@ -1,7 +1,7 @@
-{
-  "DimArtist": "1900-01-01",
-  "DimDate": "1900-01-01",
-  "DimTrack": "1900-01-01",
-  "DimUser": "1900-01-01",
-  "FactStream": "1900-01-01"
-}
+[
+  { "name": "DimArtist", "value": "1900-01-01" },
+  { "name": "DimDate", "value": "1900-01-01" },
+  { "name": "DimTrack", "value": "1900-01-01" },
+  { "name": "DimUser", "value": "1900-01-01" },
+  { "name": "FactStream", "value": "1900-01-01" }
+]
