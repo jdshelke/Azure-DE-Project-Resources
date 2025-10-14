@@ -56,7 +56,9 @@
 						"referenceName": "AzureSql",
 						"type": "DatasetReference"
 					},
-					"fieldList": []
+					"fieldList": [
+						"exists"
+					]
 				}
 			}
 		],
