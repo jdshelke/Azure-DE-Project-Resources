@@ -5,8 +5,6 @@
 			{
 				"name": "Copy data from sql database",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Lookup cdc",
