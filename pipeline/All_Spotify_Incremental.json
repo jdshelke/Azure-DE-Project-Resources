@@ -55,7 +55,8 @@
 								{
 									"activity": "Execute Pipeline Spotify_Incremental",
 									"dependencyConditions": [
-										"Failed"
+										"Failed",
+										"Succeeded"
 									]
 								}
 							],
