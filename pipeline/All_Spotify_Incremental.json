@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "[\n  {\n    \"schema\": \"dbo\",\n    \"table\": \"DimArtist\",\n    \"cdc_field\": \"updated_at\",\n    \"from_date\": \"\"\n  },\n  {\n    \"schema\": \"dbo\",\n    \"table\": \"DimDate\",\n    \"cdc_field\": \"date\",\n    \"from_date\": \"\"\n  },\n  {\n    \"schema\": \"dbo\",\n    \"table\": \"DimTrack\",\n    \"cdc_field\": \"updated_at\",\n    \"from_date\": \"\"\n  },\n  {\n    \"schema\": \"dbo\",\n    \"table\": \"DimUser\",\n    \"cdc_field\": \"updated_at\",\n    \"from_date\": \"\"\n  },\n  {\n    \"schema\": \"dbo\",\n    \"table\": \"FactStream\",\n    \"cdc_field\": \"stream_timestamp\",\n    \"from_date\": \"\"\n  }\n]",
+						"value": "@pipeline().parameters.tableList",
 						"type": "Expression"
 					},
 					"isSequential": false,
@@ -52,6 +52,43 @@
 				}
 			}
 		],
+		"parameters": {
+			"tableList": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"schema": "dbo",
+						"table": "DimArtist",
+						"cdc_field": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimDate",
+						"cdc_field": "date",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimTrack",
+						"cdc_field": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimUser",
+						"cdc_field": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "FactStream",
+						"cdc_field": "stream_timestamp",
+						"from_date": ""
+					}
+				]
+			}
+		},
 		"annotations": []
 	}
 }
