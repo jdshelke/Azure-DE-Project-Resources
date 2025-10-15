@@ -121,8 +121,6 @@
 			{
 				"name": "If incremental data",
 				"type": "IfCondition",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy data from sql database",
