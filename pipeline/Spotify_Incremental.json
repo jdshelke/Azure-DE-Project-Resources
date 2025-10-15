@@ -31,7 +31,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT * FROM @{pipeline().parameters.schema}.@{pipeline().parameters.table} where @{pipeline().parameters.cdc_field} > '@{activity('Lookup cdc').output.firstRow.cdc}'",
+							"value": "SELECT * FROM @{pipeline().parameters.schema}.@{pipeline().parameters.table} where @{pipeline().parameters.cdc_field} > '@{if(empty(pipeline().parameters.from_date),activity('Lookup cdc').output.firstRow.cdc, pipeline().parameters.from_date)}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -121,6 +121,8 @@
 			{
 				"name": "If incremental data",
 				"type": "IfCondition",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy data from sql database",
@@ -312,6 +314,9 @@
 			},
 			"cdc_field": {
 				"type": "String"
+			},
+			"from_date": {
+				"type": "string"
 			}
 		},
 		"variables": {
