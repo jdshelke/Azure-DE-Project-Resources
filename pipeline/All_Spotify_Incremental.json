@@ -1,0 +1,122 @@
+{
+	"name": "All_Spotify_Incremental",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.tableList",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Execute Pipeline Spotify_Incremental",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Spotify_Incremental",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"schema": {
+										"value": "@item().schema",
+										"type": "Expression"
+									},
+									"table": {
+										"value": "@item().table",
+										"type": "Expression"
+									},
+									"cdc_field": {
+										"value": "@item().cdc_field",
+										"type": "Expression"
+									},
+									"from_date": {
+										"value": "@item().from_date",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Alert",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-18.uksouth.logic.azure.com:443/workflows/85af5ba622974bd985ad706c50041a65/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=tFwmns-Plk3P9y2tHQLBS5fF8oNzFM2qa8a8DNNnqvU",
+					"body": {
+						"value": "{\n    \"PipelineName\": \"@{pipeline().Pipeline}\",\n    \"PipelineId\": \"@{pipeline().RunId}\",\n    \"ErrorMessage\": \"This is sample error message\"\n}\n",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"tableList": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"schema": "dbo",
+						"table": "DimArtist",
+						"cdc_field": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimDate",
+						"cdc_field": "date",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimTrack",
+						"cdc_field": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimUser",
+						"cdc_field": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "FactStream",
+						"cdc_field": "stream_timestamp",
+						"from_date": ""
+					}
+				]
+			}
+		},
+		"annotations": []
+	}
+}
