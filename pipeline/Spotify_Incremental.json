@@ -308,10 +308,12 @@
 				"defaultValue": "dbo"
 			},
 			"table": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "FactStream"
 			},
 			"cdc_field": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "stream_timestamp"
 			},
 			"from_date": {
 				"type": "string"
