@@ -5,9 +5,9 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "F:\\Study\\Data Engineering Project\\Brazilian E-Commerce\\Dataset",
+			"host": "C:\\adf_shared_folder",
 			"userId": ".\\ram",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3OTZlZTFiMy0zZTgzLTQwMTQtOTdmZi0zMWRiZTFlYmFhYTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1ZmNhODEzYy1iZGQ1LTQ0MWUtOGVlMi01NGY0Nzc2ODg5YWMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "Self-Hosted-Laptop-IR",
