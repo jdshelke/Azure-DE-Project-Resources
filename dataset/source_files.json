@@ -1,0 +1,56 @@
+{
+	"name": "source_files",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LaptopLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"source_file_name": {
+				"type": "string",
+				"defaultValue": "customer_files"
+			}
+		},
+		"folder": {
+			"name": "Brazilian-E-Commerce"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": {
+					"value": "@dataset().source_file_name",
+					"type": "Expression"
+				},
+				"folderPath": "Data Engineering Project/Brazilian E-Commerce/Dataset"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "customer_id",
+				"type": "String"
+			},
+			{
+				"name": "customer_unique_id",
+				"type": "String"
+			},
+			{
+				"name": "customer_zip_code_prefix",
+				"type": "String"
+			},
+			{
+				"name": "customer_city",
+				"type": "String"
+			},
+			{
+				"name": "customer_state",
+				"type": "String"
+			}
+		]
+	}
+}

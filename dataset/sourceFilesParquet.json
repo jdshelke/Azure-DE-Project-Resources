@@ -1,0 +1,33 @@
+{
+	"name": "sourceFilesParquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"file_name": {
+				"type": "string",
+				"defaultValue": "customer"
+			}
+		},
+		"folder": {
+			"name": "Brazilian-E-Commerce"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
+				"folderPath": "bronze",
+				"fileSystem": "brazilian-e-commerce"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
