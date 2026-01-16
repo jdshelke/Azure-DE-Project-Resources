@@ -9,6 +9,9 @@
 			"file_name": {
 				"type": "string",
 				"defaultValue": "customer"
+			},
+			"folder_name": {
+				"type": "String"
 			}
 		},
 		"folder": {
@@ -23,7 +26,10 @@
 					"value": "@dataset().file_name",
 					"type": "Expression"
 				},
-				"folderPath": "bronze",
+				"folderPath": {
+					"value": "@concat('bronze/', dataset().folder_name)",
+					"type": "Expression"
+				},
 				"fileSystem": "brazilian-e-commerce"
 			},
 			"compressionCodec": "snappy"

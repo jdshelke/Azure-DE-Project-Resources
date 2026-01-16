@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"source_file_name": {
+			"source_folder_name": {
 				"type": "string",
 				"defaultValue": "customer_files"
 			}
@@ -19,11 +19,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "FileServerLocation",
-				"fileName": {
-					"value": "@dataset().source_file_name",
+				"folderPath": {
+					"value": "@concat('Data Engineering Project/Brazilian E-Commerce/Dataset/', dataset().source_folder_name)",
 					"type": "Expression"
-				},
-				"folderPath": "Data Engineering Project/Brazilian E-Commerce/Dataset"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

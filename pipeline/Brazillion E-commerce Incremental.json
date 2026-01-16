@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "[\"customer_files\", \"geolocation_files\", \"order_items_files\", \"order_payments_files\", \"order_reviews_files\", \"orders_files\", \"products_files\", \"sellers_files\", \"product_category_name_translation_file\"]",
+						"value": "@json('[\"customer_files\", \"geolocation_files\", \"order_items_files\", \"order_payments_files\", \"orders_files\", \"products_files\", \"sellers_files\", \"product_category_name_translation_files\"]')",
 						"type": "Expression"
 					},
 					"activities": [
@@ -30,7 +30,7 @@
 									"referenceName": "source_files",
 									"type": "DatasetReference",
 									"parameters": {
-										"source_file_name": {
+										"source_folder_name": {
 											"value": "@item()",
 											"type": "Expression"
 										}
@@ -42,6 +42,7 @@
 								],
 								"storeSettings": {
 									"type": "FileServerReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -91,6 +92,7 @@
 												"storeSettings": {
 													"type": "FileServerReadSettings",
 													"recursive": true,
+													"wildcardFileName": "*.csv",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -121,7 +123,7 @@
 												"referenceName": "source_files",
 												"type": "DatasetReference",
 												"parameters": {
-													"source_file_name": {
+													"source_folder_name": {
 														"value": "@item()",
 														"type": "Expression"
 													}
@@ -134,7 +136,11 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"file_name": {
-														"value": "@concat(item(), '_', variables('curr_date'))",
+														"value": "@concat(replace(item(), '_files', ''), '_', variables('curr_date'))",
+														"type": "Expression"
+													},
+													"folder_name": {
+														"value": "@item()",
 														"type": "Expression"
 													}
 												}
