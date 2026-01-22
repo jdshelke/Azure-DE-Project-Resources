@@ -42,6 +42,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -140,6 +141,35 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Load_Stage_tables",
+				"type": "DatabricksNotebook",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "ForEach source",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/sureshshelke5930@gmail.com/Brazilian E-Commerce/silver/silver_stage_load"
+				},
+				"linkedServiceName": {
+					"referenceName": "DatabricksAzureProject",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
