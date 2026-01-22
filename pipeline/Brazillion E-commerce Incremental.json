@@ -41,8 +41,7 @@
 									"exists"
 								],
 								"storeSettings": {
-									"type": "FileServerReadSettings",
-									"recursive": true,
+									"type": "AzureBlobStorageReadSettings",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -56,12 +55,6 @@
 							"dependsOn": [
 								{
 									"activity": "Get Metadata",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								},
-								{
-									"activity": "Set curr_date",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -135,10 +128,6 @@
 												"referenceName": "sourceFilesParquet",
 												"type": "DatasetReference",
 												"parameters": {
-													"file_name": {
-														"value": "@concat(replace(item(), '_files', ''), '_', variables('curr_date'))",
-														"type": "Expression"
-													},
 													"folder_name": {
 														"value": "@item()",
 														"type": "Expression"
@@ -148,23 +137,6 @@
 										]
 									}
 								]
-							}
-						},
-						{
-							"name": "Set curr_date",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "curr_date",
-								"value": {
-									"value": "@utcNow()",
-									"type": "Expression"
-								}
 							}
 						}
 					]
