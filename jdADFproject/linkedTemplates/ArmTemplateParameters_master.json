@@ -11,6 +11,9 @@
 		"AzureSqlDatabase_password": {
 			"value": ""
 		},
+		"LaptopLS_password": {
+			"value": ""
+		},
 		"AzureDataLakeStorage_properties_typeProperties_url": {
 			"value": "https://jdazstorageac.dfs.core.windows.net/"
 		},
@@ -22,6 +25,12 @@
 		},
 		"AzureSqlDatabase_properties_typeProperties_userName": {
 			"value": "jdshelke"
+		},
+		"LaptopLS_properties_typeProperties_host": {
+			"value": "F:\\Study"
+		},
+		"LaptopLS_properties_typeProperties_userId": {
+			"value": ".\\ram"
 		},
 		"containerUri": {
 			"value": ""

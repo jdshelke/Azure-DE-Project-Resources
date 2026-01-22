@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase'"
 		},
+		"LaptopLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LaptopLS'"
+		},
 		"AzureDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://jdazstorageac.dfs.core.windows.net/"
@@ -30,6 +34,14 @@
 		"AzureSqlDatabase_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "jdshelke"
+		},
+		"LaptopLS_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "F:\\Study"
+		},
+		"LaptopLS_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": ".\\ram"
 		},
 		"containerUri": {
 			"type": "string",
@@ -64,6 +76,9 @@
 					"AzureSqlDatabase_password": {
 						"value": "[parameters('AzureSqlDatabase_password')]"
 					},
+					"LaptopLS_password": {
+						"value": "[parameters('LaptopLS_password')]"
+					},
 					"AzureDataLakeStorage_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_url')]"
 					},
@@ -75,6 +90,12 @@
 					},
 					"AzureSqlDatabase_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase_properties_typeProperties_userName')]"
+					},
+					"LaptopLS_properties_typeProperties_host": {
+						"value": "[parameters('LaptopLS_properties_typeProperties_host')]"
+					},
+					"LaptopLS_properties_typeProperties_userId": {
+						"value": "[parameters('LaptopLS_properties_typeProperties_userId')]"
 					}
 				}
 			},
